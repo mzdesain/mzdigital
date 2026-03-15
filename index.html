@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MZDigital - Jasa Undangan Digital Pernikahan Eksklusif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #F9F8F4;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-heading {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        :root {
+            --primary: #11b1aa;
+            --accent: #D6BD98;
+            --soft-bg: #F9F8F4;
+        }
+
+        .text-primary-custom {
+            color: var(--primary);
+        }
+
+        .bg-primary-custom {
+            background-color: var(--primary);
+        }
+
+        .glass-nav {
+            background: rgba(249, 248, 244, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(17, 177, 170, 0.05);
+        }
+
+        .btn-premium {
+            background: var(--primary);
+            color: #F9F8F4;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(17, 177, 170, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #F9F8F4;
+        }
+
+        .card-demo {
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: white;
+            border: 1px solid rgba(17, 177, 170, 0.03);
+        }
+
+        .card-demo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(17, 177, 170, 0.1);
+        }
+
+        /* Testimonials Scroll */
+        .testimonial-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 24px;
+            padding: 20px 0;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .testimonial-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            scroll-snap-align: start;
+            flex: 0 0 320px;
+        }
+
+        .modal-overlay {
+            background: rgba(14, 31, 31, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .hidden-modal {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hidden-modal .modal-content {
+            transform: translateY(40px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #11b1aa;
+            border-radius: 10px;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="text-[#0E1F1F] overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary-custom rounded-full flex items-center justify-center">
+                        <i data-lucide="sparkles" class="text-white w-5 h-5"></i>
+                    </div>
+                    <span class="text-2xl font-black font-heading text-primary-custom">MZ<span
+                            class="font-light italic">Digital</span></span>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center text-sm font-semibold">
+                    <a href="#fitur" class="text-primary-custom/60 hover:text-primary-custom transition">Layanan</a>
+                    <a href="#demo" class="text-primary-custom/60 hover:text-primary-custom transition">Demo</a>
+                    <a href="#testimoni"
+                        class="text-primary-custom/60 hover:text-primary-custom transition">Testimoni</a>
+                    <button onclick="openFormModal()" class="btn-premium px-8 py-3 rounded-full text-xs font-bold">
+                        Buat Sekarang
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-primary-custom" onclick="openFormModal()"><i
+                            data-lucide="align-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative z-10" data-aos="fade-right" data-aos-duration="1000">
+                <div
+                    class="inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full bg-slate-200/50 border border-slate-200">
+                    <span class="text-[10px] font-bold text-primary-custom">Premium Invitations</span>
+                </div>
+                <h1 class="text-6xl md:text-[80px] mb-8 leading-[0.95] font-black font-heading text-primary-custom">
+                    Momen Indah <br />
+                    <span class="font-light italic text-[#DD6B98]">Dimulai Di Sini.</span>
+                </h1>
+                <p class="text-lg text-primary-custom/60 font-medium max-w-lg leading-relaxed mb-12">
+                    Hadirkan kesan eksklusif untuk hari bahagia Anda dengan undangan website MZDigital. Estetik, cepat,
+                    dan aktif selamanya.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openFormModal()"
+                        class="btn-premium px-10 py-5 rounded-full text-lg font-bold shadow-2xl w-full sm:w-auto">
+                        Mulai Buat Undangan
+                    </button>
+                    <a href="https://wa.me/6285251675143" target="_blank"
+                        class="btn-outline px-10 py-5 rounded-full text-lg font-bold flex items-center justify-center gap-3 w-full sm:w-auto">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> Chat Admin
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center" data-aos="zoom-in" data-aos-duration="1200">
+                <div
+                    class="w-[280px] h-[580px] bg-primary-custom rounded-[3rem] p-3 shadow-2xl relative z-10 floating-element">
+                    <img src="https://images.unsplash.com/photo-1544480542-142c2694553b?auto=format&fit=crop&q=80"
+                        class="w-full h-full object-cover rounded-[2.5rem]" alt="Hero Preview">
+                </div>
+                <div class="absolute -z-10 w-96 h-96 bg-accent-custom/20 rounded-full blur-[100px] animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitur -->
+    <section id="fitur" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-5xl font-black font-heading text-primary-custom mb-4">Fitur Lengkap</h2>
+                <p class="text-primary-custom/40 font-bold text-xs uppercase tracking-widest">MZDigital Premium
+                    Experience</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <i data-lucide="infinity"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-4">Aktif Selamanya</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Undangan digital tetap
+                        dapat diakses tanpa batasan waktu.</p>
+                </div>
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <i data-lucide="user-plus"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-4">Custom Nama Tamu</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Personalisasi link
+                        undangan khusus untuk setiap tamu.</p>
+                </div>
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <i data-lucide="music"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-2">Custom Musik Latar</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Pilih lagu romantis
+                        sebagai pengiring undangan Anda.</p>
+                </div>
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <i data-lucide="palette"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-2">Tema Bisa Custom</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Bebas pilih dan ganti tema
+                        sesuai keinginan Anda.</p>
+                </div>
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="500">
+                    <i data-lucide="message-square"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-2">Form RSVP & Ucapan</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Kelola kehadiran tamu dan
+                        terima pesan doa langsung.</p>
+                </div>
+                <div class="p-8 bg-[#F9F8F4] rounded-[2.5rem] border border-primary-custom/5 transition hover:bg-white hover:shadow-xl group"
+                    data-aos="fade-up" data-aos-delay="600">
+                    <i data-lucide="gift"
+                        class="w-8 h-8 mb-6 text-primary-custom transition-transform group-hover:scale-110"></i>
+                    <h3 class="font-bold text-sm text-primary-custom mb-2">Amplop Digital</h3>
+                    <p class="text-[11px] text-primary-custom/40 font-medium leading-relaxed">Terima tanda kasih dari
+                        tamu melalui transfer/e-wallet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section (6 Items) -->
+    <section id="demo" class="py-32 bg-[#F2F1EC]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-5xl font-black font-heading text-primary-custom mb-4">Pilihan Demo Terbaik</h2>
+                <p class="text-accent-custom font-bold text-xs uppercase tracking-widest">6 Most Popular Styles</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544480542-142c2694553b?auto=format&fit=crop&q=80"
+                            class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary-custom/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <a href="https://suardi-icha.netlify.app/" target="_blank"
+                                class="bg-white text-primary-custom px-8 py-3 rounded-full font-black text-xs uppercase shadow-xl transform scale-90 group-hover:scale-100 transition duration-300">Preview</a>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Suardi & Icha</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Minimalist Sage</p>
+                    </div>
+                </div>
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80"
+                            class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary-custom/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <a href="https://sopian-himmah.vercel.app/" target="_blank"
+                                class="bg-white text-primary-custom px-8 py-3 rounded-full font-black text-xs uppercase shadow-xl transform scale-90 group-hover:scale-100 transition duration-300">Preview</a>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Sopian & Himmah</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Midnight Royal</p>
+                    </div>
+                </div>
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[4/5] bg-slate-200 flex items-center justify-center">
+                        <p class="text-[10px] font-bold opacity-20">Coming Soon</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Earthy Boho</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Warm Terracotta</p>
+                    </div>
+                </div>
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[4/5] bg-slate-200 flex items-center justify-center">
+                        <p class="text-[10px] font-bold opacity-20">Coming Soon</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Classic White</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Pure Elegant</p>
+                    </div>
+                </div>
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[4/5] bg-slate-200 flex items-center justify-center">
+                        <p class="text-[10px] font-bold opacity-20">Coming Soon</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Sunset Blush</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Warm Pink</p>
+                    </div>
+                </div>
+                <div class="card-demo group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[4/5] bg-slate-200 flex items-center justify-center">
+                        <p class="text-[10px] font-bold opacity-20">Coming Soon</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold">Urban Modern</h3>
+                        <p class="text-[10px] font-bold text-primary-custom/30 mt-1">Clean Slate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Side-Scroll -->
+    <section id="testimoni" class="py-32 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-16" data-aos="fade-up">
+                <div>
+                    <h2 class="text-4xl font-black font-heading text-primary-custom mb-2">Apa Kata Mereka?</h2>
+                    <p class="text-[10px] font-bold text-primary-custom/30 uppercase tracking-widest">Client Stories</p>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        onclick="document.querySelector('.testimonial-container').scrollBy({left: -320, behavior: 'smooth'})"
+                        class="p-4 rounded-full border border-primary-custom/10 hover:bg-primary-custom hover:text-white transition duration-300"><i
+                            data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <button
+                        onclick="document.querySelector('.testimonial-container').scrollBy({left: 320, behavior: 'smooth'})"
+                        class="p-4 rounded-full border border-primary-custom/10 hover:bg-primary-custom hover:text-white transition duration-300"><i
+                            data-lucide="arrow-right" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+            <div class="testimonial-container" data-aos="fade-up">
+                <div
+                    class="testimonial-card bg-[#F9F8F4] p-10 rounded-[3rem] border border-primary-custom/5 transition-transform hover:scale-[0.98]">
+                    <p class="italic font-medium text-sm leading-relaxed mb-8">"Proses kilat banget! Ga sampe 24 jam
+                        udah jadi dan hasilnya mewah bgt. Fitur RSVP-nya nolong banget buat list tamu."</p>
+                    <h4 class="font-black text-xs text-accent-custom">Rina & Doni</h4>
+                </div>
+                <div
+                    class="testimonial-card bg-primary-custom p-10 rounded-[3rem] text-white transition-transform hover:scale-[0.98]">
+                    <p class="italic font-medium text-sm leading-relaxed mb-8">"Harga 95rb tapi kualitasnya bintang
+                        lima. Revisi dibantu sampe bener-bener pas. Makasih MZDigital!"</p>
+                    <h4 class="font-black text-xs text-accent-custom">Fajar & Maya</h4>
+                </div>
+                <div
+                    class="testimonial-card bg-[#F9F8F4] p-10 rounded-[3rem] border border-primary-custom/5 transition-transform hover:scale-[0.98]">
+                    <p class="italic font-medium text-sm leading-relaxed mb-8">"Adminnya super sabar. Link undangannya
+                        enteng banget pas dibuka di HP. Recommended!"</p>
+                    <h4 class="font-black text-xs text-accent-custom">Hendra & Siska</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="harga"
+        class="py-32 bg-primary-custom text-white mx-4 md:mx-12 rounded-[5rem] mb-20 text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-md mx-auto bg-white p-12 rounded-[4rem] text-primary-custom shadow-2xl"
+            data-aos="zoom-in">
+            <h3 class="text-3xl font-black font-heading mb-2">Paket Unlimited</h3>
+            <p class="text-[10px] font-bold mb-10 opacity-30">Akses Seluruh Fitur</p>
+            <div class="mb-10 text-7xl font-black">95<span class="text-xl font-bold opacity-20">rb</span></div>
+
+            <ul class="text-left space-y-4 mb-12 font-bold text-[13px] px-2">
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Aktif Selamanya</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Custom Nama Tamu Undangan</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Custom Musik Latar</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Tema Lengkap Bisa Custom</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Form RSVP & Ucapan</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Amplop Digital & Tanda Kasih</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Hitung Mundur Waktu Acara</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Integrasi Google Maps</li>
+                <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    Galeri Foto & Video</li>
+            </ul>
+
+            <button onclick="openFormModal()" class="w-full btn-premium py-6 rounded-full font-black text-lg">Buat
+                Sekarang</button>
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-full h-1/2 bg-accent-custom/10 transform rotate-12 -translate-x-1/2 translate-y-1/2">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-custom py-24 text-[#F9F8F4] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-16 items-start">
+                <div data-aos="fade-right">
+                    <div class="flex items-center space-x-3 mb-8">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                            <i data-lucide="sparkles" class="text-accent-custom w-5 h-5"></i>
+                        </div>
+                        <span class="text-2xl font-black font-heading">MZDigital</span>
+                    </div>
+                    <p class="text-[#F9F8F4]/50 text-sm leading-relaxed max-w-xs">Kami percaya setiap momen berharga
+                        layak mendapatkan undangan terbaik yang abadi.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="font-black text-xs mb-8 text-accent-custom uppercase tracking-widest">Menu</h4>
+                    <ul class="space-y-4 text-xs font-bold uppercase">
+                        <li><a href="#fitur" class="hover:text-accent-custom transition">Fitur</a></li>
+                        <li><a href="#demo" class="hover:text-accent-custom transition">Demo</a></li>
+                        <li><a href="#testimoni" class="hover:text-accent-custom transition">Testimoni</a></li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="200">
+                    <h4 class="font-black text-xs mb-8 text-accent-custom uppercase tracking-widest">Bantuan</h4>
+                    <div class="space-y-6">
+                        <a href="https://wa.me/6285251675143" target="_blank"
+                            class="bg-white/5 border border-white/10 p-5 rounded-3xl flex items-center gap-4 hover:bg-white/10 transition group">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-accent-custom"></i>
+                            <div>
+                                <p class="text-xs font-black mb-0.5">Chat Admin</p>
+                                <p class="text-[10px] opacity-40">Respon Cepat 24/7</p>
+                            </div>
+                        </a>
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-accent-custom hover:text-primary-custom transition duration-300"><i
+                                    data-lucide="instagram" class="w-5 h-5"></i></a>
+                            <a href="#"
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-accent-custom hover:text-primary-custom transition duration-300">
+                                <i data-lucide="youtube" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-accent-custom hover:text-primary-custom transition duration-300">
+                                <i data-lucide="music" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-16 mt-16 border-t border-white/5 text-center">
+                <p class="text-[#FFFFFFF]/20 text-[10px] font-bold">&copy; 2026 MZDigital • Indonesia Premium
+                    Invitations</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action -->
+    <button onclick="openFormModal()"
+        class="fixed bottom-12 right-12 z-50 bg-[#11b1aa] text-white p-6 rounded-full shadow-2xl transition hover:scale-110">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </button>
+
+    <!-- FORM MODAL -->
+    <div id="formModal" class="fixed inset-0 modal-overlay hidden-modal flex items-center justify-center p-4">
+        <div
+            class="modal-content bg-[#F9F8F4] w-full max-w-2xl max-h-[90vh] rounded-[4rem] shadow-2xl overflow-hidden flex flex-col transition-all duration-500">
+            <div
+                class="p-10 bg-white flex justify-between items-center border-b border-primary-custom/5 sticky top-0 z-10">
+                <div>
+                    <h2 class="text-3xl font-black font-heading text-primary-custom leading-tight">Data Undangan</h2>
+                    <p class="text-[9px] font-black text-primary-custom/30 mt-1 italic">Silakan isi detail data di bawah
+                        ini</p>
+                </div>
+                <button onclick="closeFormModal()"
+                    class="p-3 bg-slate-100 rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"><i
+                        data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-10 custom-scrollbar">
+                <form id="invitationForm" class="space-y-16">
+                    <!-- Data Mempelai Pria -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Mempelai Pria <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" name="nama_pria" placeholder="Nama Lengkap Pria"
+                                class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                                required>
+                            <input type="text" name="panggilan_pria" placeholder="Nama Panggilan"
+                                class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                                required>
+                        </div>
+                        <input type="text" name="ortu_pria" placeholder="Anak ke- dari Bapak ... & Ibu ..."
+                            class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                            required>
+                    </div>
+
+                    <!-- Data Mempelai Wanita -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Mempelai Wanita <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" name="nama_wanita" placeholder="Nama Lengkap Wanita"
+                                class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                                required>
+                            <input type="text" name="panggilan_wanita" placeholder="Nama Panggilan"
+                                class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                                required>
+                        </div>
+                        <input type="text" name="ortu_wanita" placeholder="Anak ke- dari Bapak ... & Ibu ..."
+                            class="w-full px-8 py-5 rounded-3xl bg-white outline-none font-bold border border-primary-custom/5 focus:ring-2 focus:ring-accent-custom"
+                            required>
+                    </div>
+
+                    <!-- Akad Nikah -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Detail Akad Nikah <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <p class="text-[9px] font-black ml-4 text-primary-custom/30 uppercase tracking-widest">
+                                    Tanggal Akad</p>
+                                <input type="date" name="tgl_akad"
+                                    class="w-full px-8 py-5 rounded-3xl bg-white font-bold" required>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[9px] font-black ml-4 text-primary-custom/30 uppercase tracking-widest">
+                                    Waktu Akad</p>
+                                <input type="text" name="waktu_akad" placeholder="Contoh: 09:00 - Selesai"
+                                    class="w-full px-8 py-5 rounded-3xl bg-white font-bold" required>
+                            </div>
+                        </div>
+                        <textarea name="lokasi_akad" placeholder="Lokasi Lengkap Akad Nikah"
+                            class="w-full px-8 py-5 rounded-3xl bg-white h-24 outline-none font-bold border border-primary-custom/5"
+                            required></textarea>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Detail Resepsi <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <p class="text-[9px] font-black ml-4 text-primary-custom/30 uppercase tracking-widest">
+                                    Tanggal Resepsi</p>
+                                <input type="date" name="tgl_resepsi"
+                                    class="w-full px-8 py-5 rounded-3xl bg-white font-bold" required>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[9px] font-black ml-4 text-primary-custom/30 uppercase tracking-widest">
+                                    Waktu Resepsi</p>
+                                <input type="text" name="waktu_resepsi" placeholder="Contoh: 11:00 - 15:00"
+                                    class="w-full px-8 py-5 rounded-3xl bg-white font-bold" required>
+                            </div>
+                        </div>
+                        <textarea name="lokasi_resepsi" placeholder="Lokasi Lengkap Resepsi"
+                            class="w-full px-8 py-5 rounded-3xl bg-white h-24 outline-none font-bold border border-primary-custom/5"
+                            required></textarea>
+                    </div>
+
+                    <!-- Rekening -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Info Kado / Rekening <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <input type="text" name="bank" placeholder="Nama Bank/Dompet"
+                                class="w-full px-6 py-5 rounded-3xl bg-white font-bold border border-primary-custom/5">
+                            <input type="text" name="no_rek" placeholder="Nomor Rekening"
+                                class="w-full px-6 py-5 rounded-3xl bg-white font-bold border border-primary-custom/5">
+                            <input type="text" name="an_rek" placeholder="Atas Nama (a.n)"
+                                class="w-full px-6 py-5 rounded-3xl bg-white font-bold border border-primary-custom/5">
+                        </div>
+                    </div>
+
+                    <!-- Tambahan -->
+                    <div class="space-y-8">
+                        <h3
+                            class="font-black text-xs text-primary-custom/40 flex items-center gap-3 uppercase tracking-widest">
+                            Lain-lain <span class="h-px flex-1 bg-primary-custom/10"></span></h3>
+                        <input type="url" name="maps_link" placeholder="Link Google Maps Lokasi"
+                            class="w-full px-8 py-5 rounded-3xl bg-white font-bold border border-primary-custom/5">
+                        <input type="text" name="musik" placeholder="Judul Lagu Musik Latar (Pilihan)"
+                            class="w-full px-8 py-5 rounded-3xl bg-white font-bold border border-primary-custom/5">
+                    </div>
+                </form>
+            </div>
+
+            <div class="p-10 bg-white border-t border-primary-custom/5 flex items-center justify-between gap-6">
+                <button onclick="closeFormModal()"
+                    class="text-[10px] font-black text-primary-custom/40 hover:text-primary-custom transition duration-300">Batal</button>
+                <button onclick="submitToWhatsApp()"
+                    class="flex-1 btn-premium py-6 rounded-[2.5rem] font-black text-xs flex items-center justify-center gap-3">
+                    <i data-lucide="send" class="w-4 h-4"></i> Kirim Data Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 100
+        });
+
+        lucide.createIcons();
+
+        const modal = document.getElementById('formModal');
+
+        function openFormModal() {
+            modal.classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFormModal() {
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitToWhatsApp() {
+            const form = document.getElementById('invitationForm');
+            const formData = new FormData(form);
+
+            let message = `*ORDER UNDANGAN DIGITAL - MZDIGITAL*\n\n`;
+
+            message += `*--- DATA PRIA ---*\n`;
+            message += `🤵 Nama: ${formData.get('nama_pria')} (${formData.get('panggilan_pria')})\n`;
+            message += `Anak: ${formData.get('ortu_pria')}\n\n`;
+
+            message += `*--- DATA WANITA ---*\n`;
+            message += `👰 Nama: ${formData.get('nama_wanita')} (${formData.get('panggilan_wanita')})\n`;
+            message += `Anak: ${formData.get('ortu_wanita')}\n\n`;
+
+            message += `*--- AKAD NIKAH ---*\n`;
+            message += `📅 Tanggal: ${formData.get('tgl_akad')}\n`;
+            message += `🕒 Waktu: ${formData.get('waktu_akad')}\n`;
+            message += `📍 Lokasi: ${formData.get('lokasi_akad')}\n\n`;
+
+            message += `*--- RESEPSI ---*\n`;
+            message += `📅 Tanggal: ${formData.get('tgl_resepsi')}\n`;
+            message += `🕒 Waktu: ${formData.get('waktu_resepsi')}\n`;
+            message += `📍 Lokasi: ${formData.get('lokasi_resepsi')}\n\n`;
+
+            message += `*--- REKENING ---*\n`;
+            message += `💳 ${formData.get('bank')}: ${formData.get('no_rek')} (a.n ${formData.get('an_rek')})\n\n`;
+
+            if (formData.get('maps_link')) message += `📍 Link Maps: ${formData.get('maps_link')}\n`;
+            if (formData.get('musik')) message += `🎵 Musik: ${formData.get('musik')}\n`;
+
+            window.open(`https://wa.me/6285251675143?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeFormModal(); });
+    </script>
+</body>
+
+</html>
