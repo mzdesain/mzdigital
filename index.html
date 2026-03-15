@@ -149,32 +149,52 @@
 <body class="text-[#0E1F1F] overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-40 glass-nav">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex justify-between items-center h-24">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-primary-custom rounded-full flex items-center justify-center">
-                        <i data-lucide="sparkles" class="text-white w-5 h-5"></i>
-                    </div>
-                    <span class="text-2xl font-black font-heading text-primary-custom">MZ<span
-                            class="font-light italic">Digital</span></span>
+  <nav class="fixed w-full z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex justify-between items-center h-24">
+
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary-custom rounded-full flex items-center justify-center">
+                    <i data-lucide="sparkles" class="text-white w-5 h-5"></i>
                 </div>
-                <div class="hidden md:flex space-x-10 items-center text-sm font-semibold">
-                    <a href="#fitur" class="text-primary-custom/60 hover:text-primary-custom transition">Layanan</a>
-                    <a href="#demo" class="text-primary-custom/60 hover:text-primary-custom transition">Demo</a>
-                    <a href="#testimoni"
-                        class="text-primary-custom/60 hover:text-primary-custom transition">Testimoni</a>
-                    <button onclick="openFormModal()" class="btn-premium px-8 py-3 rounded-full text-xs font-bold">
-                        Buat Sekarang
-                    </button>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-primary-custom" onclick="openFormModal()"><i
-                            data-lucide="align-right"></i></button>
-                </div>
+                <span class="text-2xl font-black font-heading text-primary-custom">
+                    MZ<span class="font-light italic">Digital</span>
+                </span>
             </div>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-10 items-center text-sm font-semibold">
+                <a href="#fitur" class="text-primary-custom/60 hover:text-primary-custom transition">Layanan</a>
+                <a href="#demo" class="text-primary-custom/60 hover:text-primary-custom transition">Demo</a>
+                <a href="#testimoni" class="text-primary-custom/60 hover:text-primary-custom transition">Testimoni</a>
+                <button onclick="openFormModal()" class="btn-premium px-8 py-3 rounded-full text-xs font-bold">
+                    Buat Sekarang
+                </button>
+            </div>
+
+            <!-- Tombol Hamburger -->
+            <div class="md:hidden">
+                <button class="text-primary-custom" onclick="toggleMenu()">
+                    <i data-lucide="align-right"></i>
+                </button>
+            </div>
+
         </div>
-    </nav>
+
+        <!-- Menu Mobile -->
+        <div id="mobileMenu" class="hidden md:hidden flex flex-col space-y-5 pb-6 text-sm font-semibold">
+            <a href="#fitur" class="text-primary-custom/60 hover:text-primary-custom transition">Layanan</a>
+            <a href="#demo" class="text-primary-custom/60 hover:text-primary-custom transition">Demo</a>
+            <a href="#testimoni" class="text-primary-custom/60 hover:text-primary-custom transition">Testimoni</a>
+            <button onclick="openFormModal()" class="btn-premium px-8 py-3 rounded-full text-xs font-bold w-fit">
+                Buat Sekarang
+            </button>
+        </div>
+
+    </div>
+</nav>
+    
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
@@ -702,7 +722,10 @@
             });
         });
 
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeFormModal(); });
+    function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("hidden");
+}
     </script>
 </body>
 
